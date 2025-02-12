@@ -1,66 +1,242 @@
 *{
     margin: 0;
     padding: 0;
+    text-decoration: none;
 }
 
 body{
-    background-color: #E43F6F;
-    text-align: center;
+    overflow: hidden;
+    color: white;
+    animation: fadeIn 1s ease-in-out;
+    background-color: black;
+    background-attachment: fixed;
 }
 
-.container{
-    height: 70vh;
+header{
+    width: 100%;
+    height: 100vh;
+    background-color: transparent;
+    animation: fadeIn 1s ease-in-out;
+}
+
+/*Add animated stars*/
+
+.star{
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: #fff;
+    animation: twinkle 2s infinite;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+}
+
+@keyframes twinkle {
+    0%{
+        opacity: 0.5;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0.5;
+    }
+}
+
+.navbar{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
-
+    animation: slideInFromTop 1s ease-in-out;
 }
 
-.game{
-    height: 60vmin;
-    width: 60vmin;
+.navbar img{
+    width: 50px;
+    animation: rotationIn 1s ease-in-out;
+}
+
+.navbar .centre-nav a,
+ .social a{
+     color: white;
+     margin-left: 15px;
+     font-size: 1.3rem;
+     transition: all 0.5s ease;
+     animation: fadeInUp 1s ease-in-out;
+}
+
+.navbar .centre-nav a:first-child{
+    color: rgb(255, 140, 0);
+}
+
+.navbar .centre-nav a:hover,
+.social a:hover{
+    color: rgb(255, 140, 0);
+    text-shadow: 0 0 10px rgb(255, 140, 0);
+}
+
+/* New style for underline effect*/
+
+.navbar .centre-nav a{
+    /* position: relative; */
+    text-decoration: none;
+}
+
+.navbar .centre-nav a::before{
+    content: "";
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    bottom: 0;
+    left:0;
+    background-color: rgb(255, 140, 0);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar .centre-nav a:hover::before{
+    visibility: visible;
+    transform: scaleX(1);    
+}
+
+.text{
+    position: relative;
+    top: 10rem;
+    left: 11rem;
+    letter-spacing: 1px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.text h1{
+    font-weight: bold;
+    font-size: 4rem;
+    font-family: sans-serif;
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.btn{
+    color: white;
+    border: 2px solid;
+    position: relative;
+    top: 3rem;
+    padding:14px 25px 14px 25px;
+    border-radius: 6px;
+    transition: all 0.5s ease;
+    margin-right: 10px;
+    animation: fadeInUp 1s ease-in-out 0.5s backwards;
+}
+
+.text .btn:hover{
+    background-color: rgb(255, 140, 0);
+    box-shadow: 0 0 10px 2px rgb(255, 140, 0);
+}
+
+.text p{
+    width: 46%;
+    animation: fadeInUp 1s ease-in-out 1s backwards;
+}
+
+.burger{
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5vmin;
+    width: 90%;
+    padding: 2px;
+    animation: slideInFromBottom 1s ease-in-out 1s backwards;
 }
 
-.box{
-    height: 18vmin;
-    width: 18vmin;
-    border-radius: 1rem;
-    border: none;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-    font-size: 8vmin;
-    color: #219ebc;
-    background-color: white;
+.burger img{
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    object-fit: cover;
+    border: 2px solid white;
+    transition: transform 0.3s ease;
+    animation: fadeInUp 1s ease-in-out 2s backwards;
 }
 
-#reset-btn{
-    padding: 1rem;
-    font-size: 1.25rem;
-    background-color: #78290f;
-    color: white;
-    border-radius: 1rem;
-    border: none;
+.burger img:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgb(255 255 255 0.8);
 }
 
-#new-btn{
-    padding: 1rem;
-    font-size: 1.25rem;
-    background-color: #78290f;
-    color: white;
-    border-radius: 1rem;
-    border: none;
+.burger-toggle img{
+    position:absolute;
+    width: 38%;
+    height: 74%;
+    right: 5%;
+    top: 7rem;
+    filter: drop-shadow(63px 90px 392px);
+    animation: fadeInUp 1s ease-in-out 2s backwards;  
 }
 
-#msg{
-    color: white;
-    height: 15vmin;
-    font-size: 30px;
+.burger,
+.burger-toggle{
+    display: flex;
 }
 
-.hide{
-    display: none;
+.burger-toggle img{
+     display: none;
 }
+
+.burger-toggle img.active{
+    display: block;
+}
+
+/*Animation*/
+
+@keyframes fadeIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp{
+    from{
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInFromTop{
+    from{
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFrombottom{
+    from{
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes rotateIn{
+    from{
+        transform: rotate3d(0,0,1,-200deg);
+        opacity: 0;
+    }
+    to{
+        transform: none;
+        opacity: 1;
+    }
+}
+
